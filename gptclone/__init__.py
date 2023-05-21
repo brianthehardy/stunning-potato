@@ -2,29 +2,15 @@ from flask import Flask, request, render_template, session
 from dotenv import load_dotenv
 import openai, os
 
-# app = Flask(__name__, static_url_path='/static')
 
 load_dotenv()
 openai.apiKey = os.getenv('OPENAI_API_KEY')
 
-# model_engine_map = {
-#     "davinci": "davinci",
-#     "curie": "curie",
-#     "babbage": "babbage",
-#     "ada": "ada",
-#     "gpt": "gpt-3.5-turbo"
-#     # Add your other GPT models here
-# }
-# api_model = model_engine_map.get("gpt")
-
 # Create and configure the app
 # This is the application factory function
 def create_app( test_config = None ):
-
-
-
     app = Flask(__name__, instance_relative_config=True)
-    # app.secret_key = os.getenv('SECRET_KEY')
+    app.secret_key = os.getenv("SECRET_KEY")
 
     # For testing
     # if test_config is None:
@@ -55,5 +41,3 @@ def create_app( test_config = None ):
     # This is done because the chat feature is the main feature of our website
 
     return app
-
-

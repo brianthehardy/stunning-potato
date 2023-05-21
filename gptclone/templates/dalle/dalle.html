@@ -3,7 +3,7 @@
 {% block content %}
     <h2>Drawing with AI</h2>
     <form action="/generate_image" method="POST" onsubmit="showLoadingMessage()">
-        <input type="text" name="prompt" placeholder="Enter a prompt. The more detailed and creative, the better!" id="user-input">
+        <input type="text" name="prompt" required="required" placeholder="Enter a prompt. The more detailed and creative, the better!" id="user-input">
         <button type="submit">Generate Image</button>
     </form>
 
