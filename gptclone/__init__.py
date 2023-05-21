@@ -2,10 +2,10 @@ from flask import Flask, request, render_template, session
 from dotenv import load_dotenv
 import openai, os
 
+# app = Flask(__name__, static_url_path='/static')
+
 load_dotenv()
 openai.apiKey = os.getenv('OPENAI_API_KEY')
-
-# app = Flask(__name__, static_url_path='/static')
 
 # model_engine_map = {
 #     "davinci": "davinci",
@@ -20,8 +20,11 @@ openai.apiKey = os.getenv('OPENAI_API_KEY')
 # Create and configure the app
 # This is the application factory function
 def create_app( test_config = None ):
+
+
+
     app = Flask(__name__, instance_relative_config=True)
-    app.secret_key = os.getenv('SECRET_KEY')
+    # app.secret_key = os.getenv('SECRET_KEY')
 
     # For testing
     # if test_config is None:
