@@ -1,0 +1,25 @@
+<!doctype html>
+<title>Experiments with AI </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="utf-8">
+<nav>
+  <h1>Experiments with AI</h1>
+  <ul>
+      <li><a href="{{ url_for('index') }}">Chat</a>
+      <li><a href="{{ url_for('dalle.dalle') }}">DALLE</a>
+  </ul>
+</nav>
+
+<section class="content">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+
+
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+
+
+  {% block content %}{% endblock %}
+</section>

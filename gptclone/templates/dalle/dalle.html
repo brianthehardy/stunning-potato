@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Drawing with AI</h2>
+    <form action="/generate_image" method="POST" onsubmit="showLoadingMessage()">
+        <input type="text" name="prompt" placeholder="Enter a prompt. The more detailed and creative, the better!" id="user-input">
+        <button type="submit">Generate Image</button>
+    </form>
+
+    <div id="loading-message" style="display: none;">
+        Loading...
+    </div>
+
+    <div id="result-container" style="display: block;">
+        {% if image_url %}
+            <div>
+                <h3>Generated Image:</h3>
+                <img src="{{ image_url }}" alt="Generated Image" >
+            </div>
+        {% endif %}
+
+        {% if prompt %}
+            <div>
+                <h3>Original Prompt:</h3>
+                <p>{{ prompt }}</p>
+            </div>
+        {% endif %}
+    </div>
+
+    <script>
+        function showLoadingMessage() {
+            document.getElementById('loading-message').style.display = 'block';
+        }
+    </script>
+{% endblock %}
