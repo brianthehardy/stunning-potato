@@ -41,6 +41,10 @@ def generate_image():
         n=1,
         size="1024x1024"
     )
-    image_url = response['data'][0]['url']
+
+    try:
+        image_url = response['data'][0]['url']
+    except openai.error.InvalidRequestError:
+        return "Your request was rejected as a result of our safety system. Your prompt may contain text that is not allowed by our safety system."
 
     return render_template("dalle/dalle.html", image_url=image_url, prompt=prompt)
