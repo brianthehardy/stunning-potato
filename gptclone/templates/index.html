@@ -2,24 +2,37 @@
 
 {% block content %}
     <h2>Chat with AI</h2>
+
     <div id="chat-log"></div>
     <form id="chat-form">
         <input type="text" id="user-input">
         <button type="submit">Send</button>
+
+
+        <label for="gpt-model">Choose a model:</label>
+        <select name="gpt-model" id="gpt-model">
+            <option value="gpt3">GPT-3.5</option>
+            <option value="gpt4">GPT-4</option>
+        </select>
+
     </form>
     <script>
         document.getElementById('chat-form').addEventListener('submit', function(event) {
             event.preventDefault();
+
             const user_input = document.getElementById('user-input').value;
+            const gpt_model = document.getElementById('gpt-model').value;
+
             document.getElementById('user-input').value = '';
             document.getElementById('chat-log').innerHTML += `<div class="user-message">${user_input}</div>`;
+
 
             fetch('/chat', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ user_input: user_input }),
+                body: JSON.stringify({ user_input: user_input, gpt_model: gpt_model }),
             })
             .then(response => response.json())
             .then(data => {

@@ -10,10 +10,13 @@ model_engine_map = {
     "curie": "curie",
     "babbage": "babbage",
     "ada": "ada",
-    "gpt": "gpt-3.5-turbo"
-    # Add your other GPT models here
+    "gpt3": "gpt-3.5-turbo",
+    "gpt4": "gpt-4",
+    # Add additional GPT models here
 }
-api_model = model_engine_map.get("gpt")
+
+# Default
+# api_model = model_engine_map.get("gpt3")
 
 @bp.route("/")
 def index():
@@ -29,6 +32,7 @@ def index():
 def chat():
     data = request.get_json()
     user_input = data["user_input"]
+    api_model = model_engine_map[data["gpt_model"]]
     chat_log = session.get("chat_log", [])
     chat_log.append({"role": "user", "content": f"{user_input}"})
 
@@ -38,6 +42,8 @@ def chat():
         temperature=0.7,
         max_tokens=1024,
     )
+
+    print(response)
 
     message = response.choices[0].message.content.strip()
 
