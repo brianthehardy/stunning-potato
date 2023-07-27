@@ -1,7 +1,23 @@
+'''
+TODO:
+
+- Exception handling in dalle.py
+- Fix screen sizing issues
+    - Safari sizing issues
+- Progressive Web Application
+- Chat history
+- Dalle history that autoforwards to dump
+- Add authentication
+- Email or text based system
+- Side-by-side comparison
+
+
+'''
+
+
 from flask import Flask, request, render_template, session
 from dotenv import load_dotenv
 import openai, os
-
 
 load_dotenv()
 openai.apiKey = os.getenv('OPENAI_API_KEY')
@@ -36,8 +52,14 @@ def create_app( test_config = None ):
 
     from . import chat
     app.register_blueprint(chat.bp)
+
+    from . import comparison
+    app.register_blueprint(comparison.bp)
+
     app.add_url_rule('/', endpoint='index')
     # Adds the endpoint 'index' for navigation to '/'.  Not necessary, if we want these to be different
     # This is done because the chat feature is the main feature of our website
+
+
 
     return app

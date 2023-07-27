@@ -24,8 +24,6 @@ def index():
     chat_log = [{"role": "system", "content": "You are ChatGPT, a large language model trained by OpenAI. Answer as concisely as possible."}]
     session["chat_log"] = chat_log
 
-    print(chat_log)
-
     return render_template("index.html")
 
 @bp.route("/chat", methods=["POST"])

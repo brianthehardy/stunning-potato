@@ -12,6 +12,15 @@ body {
     background-color: white;
     height: calc(100vh - 300px); /* Adjust the subtracted value as needed */
 }
+#chat-log-2 {
+    border-radius: 4px;
+    padding: 10px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    flex-grow: 1;
+    background-color: white;
+    height: calc(100vh - 300px); /* Adjust the subtracted value as needed */
+}
 .user-message, .ai-message {
     margin-bottom: 5px;
     white-space: pre-wrap; /* Preserve whitespace and line breaks */
@@ -53,6 +62,15 @@ body {
     #chat-log {
         height: calc(100vh - 800px);
     }
+}
+.float-container {
+    padding: 5px;
+}
+.float-child {
+    width: 50%;
+    float: left;
+    padding: 5px;
+    border: 2px black;
 }
 
 hr { border: none; border-top: 1px solid lightgray; }
