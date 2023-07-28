@@ -60,6 +60,4 @@ def create_app( test_config = None ):
     # Adds the endpoint 'index' for navigation to '/'.  Not necessary, if we want these to be different
     # This is done because the chat feature is the main feature of our website
 
-
-
     return app
