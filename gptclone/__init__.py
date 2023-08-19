@@ -10,6 +10,7 @@ TODO:
 - Add authentication
 - Email or text based system
 - Side-by-side comparison
+- Add favicon.ico to static
 
 
 '''
@@ -46,6 +47,11 @@ def create_app( test_config = None ):
     @app.route ('/hello' )
     def hello():
         return 'Hello, world!'
+
+    # Add favicon
+    @app.route('/favicon.ico')
+    def favicon():
+        return app.send_static_file('favicon.ico')
 
     from . import dalle
     app.register_blueprint(dalle.bp)

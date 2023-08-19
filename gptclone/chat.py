@@ -41,8 +41,6 @@ def chat():
         max_tokens=1024,
     )
 
-    print(response)
-
     message = response.choices[0].message.content.strip()
 
     chat_log.append({"role": "assistant", "content": f"{message}"})

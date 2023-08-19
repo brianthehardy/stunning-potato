@@ -19,33 +19,9 @@
 
     </form>
 
-    <script>
-        document.getElementById('chat-form').addEventListener('submit', function(event) {
-            event.preventDefault();
 
-            const user_input = document.getElementById('user-input').value;
-            const gpt_model = document.getElementById('gpt-model').value;
-
-            document.getElementById('user-input').value = '';
-            document.getElementById('chat-log').innerHTML += `<div class="user-message">${user_input}</div>`;
+    <script src="{{ url_for('static', filename = 'script.js') }}"></script>
 
 
-            fetch('/chat', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ user_input: user_input, gpt_model: gpt_model }),
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('chat-log').innerHTML += `<div class="ai-message">${data.message}</div>`;
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-                document.getElementById('chat-log').innerHTML += "<div>Error retrieving response from server.</div>";
-            });
-        });
-    </script>
 {% endblock %}
 
